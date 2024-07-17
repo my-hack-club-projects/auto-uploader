@@ -1,14 +1,13 @@
 import sys
 
 from watch import Watcher
-
-# from git import upload
+from upload import upload
 
 def callback():
     print("A change has been detected")
 
 def main():
-    watcher = Watcher("test/", callback)
+    watcher = Watcher("test/", upload)
     watcher.watch()
 
 def signal_handler(sig, frame):

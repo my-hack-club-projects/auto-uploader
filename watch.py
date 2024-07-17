@@ -15,7 +15,8 @@ class Watcher:
 
     def check(self):
         if self.repo.is_dirty() or self.repo.untracked_files:
-            self.callback(time.time())
+            print("Detected changes at " + str(time.time()))
+            self.callback(self.repo, time.time())
 
     def watch(self):
         while True:
