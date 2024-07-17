@@ -1,24 +1,19 @@
 import sys
-from PyQt5.QtCore import QCoreApplication
 
-from watch import DirectoryWatcher
+from watch import Watcher
 
 # from git import upload
 
-def callback(message):
-    print(message)
+def callback():
+    print("A change has been detected")
 
 def main():
-    app = QCoreApplication(sys.argv)
-    watcher = DirectoryWatcher('test/', callback)
-
-    return app
+    watcher = Watcher(callback)
+    watcher.watch()
 
 def signal_handler(sig, frame):
     print('Exiting...')
     sys.exit(0)
 
 if __name__ == '__main__':
-    app = main()
-
-    sys.exit(app.exec_())
+    main()
