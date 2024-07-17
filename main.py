@@ -6,8 +6,8 @@ from upload import upload
 def callback():
     print("A change has been detected")
 
-def main():
-    watcher = Watcher("test/", upload)
+def main(path):
+    watcher = Watcher(path, upload)
     watcher.watch()
 
 def signal_handler(sig, frame):
@@ -15,4 +15,12 @@ def signal_handler(sig, frame):
     sys.exit(0)
 
 if __name__ == '__main__':
-    main()
+    path = None
+
+    if len(sys.argv) < 2:
+        print("Please input a path to a git repository")
+        path = input("Path: ")
+    else:
+        path = sys.argv[1]
+
+    main(path)
