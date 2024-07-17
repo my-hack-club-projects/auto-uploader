@@ -1,22 +1,21 @@
-from git import Repo
+import git
 import time
 
 class Watcher:
     # This class watches the current direcory, assuming it is a git repository. It uses git status to check for changes.
 
-    def __init__(self, callback):
-        self.repo = Repo(".")
+    def __init__(self, path, callback):
         self.callback = callback
 
-        self._prev_is_dirty = False
+        try:
+            self.repo = git.Repo(path)
+        except git.InvalidGitRepositoryError:
+            print("This is not a git repository")
+            exit(1)
 
     def check(self):
-        if self.repo.is_dirty():
-            self.callback()
-            self._prev_is_dirty = True
-        elif self._prev_is_dirty:
-            self.callback()
-            self._prev_is_dirty = False
+        if self.repo.is_dirty() or self.repo.untracked_files:
+            self.callback(time.time())
 
     def watch(self):
         while True:

@@ -8,7 +8,7 @@ def callback():
     print("A change has been detected")
 
 def main():
-    watcher = Watcher(callback)
+    watcher = Watcher("test/", callback)
     watcher.watch()
 
 def signal_handler(sig, frame):
