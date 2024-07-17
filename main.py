@@ -10,10 +10,6 @@ def main(path):
     watcher = Watcher(path, upload)
     watcher.watch()
 
-def signal_handler(sig, frame):
-    print('Exiting...')
-    sys.exit(0)
-
 if __name__ == '__main__':
     path = None
 
