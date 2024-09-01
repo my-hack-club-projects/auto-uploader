@@ -1,7 +1,9 @@
 # auto-uploader
 A (very simple) script that automatically uploads your files to Github using Git!
 
-# Installation
+![image](https://github.com/user-attachments/assets/180b3365-66b9-48b0-8fe5-10d2311046ea)
+
+# usage
 1. [Download and install Git](https://git-scm.com/downloads)
 2. Clone or download this repository.
 3. Run the `main.py` script.
